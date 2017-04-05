@@ -35,6 +35,6 @@ namespace LiveCharts.Wpf.Components
         /// <value>
         /// The point foreround.
         /// </value>
-        Brush PointForeround { get; }
+        Brush PointForeground { get; }
     }
 }
