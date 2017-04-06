@@ -28,6 +28,7 @@ using Winforms.Gauge.AngularGauge;
 using Winforms.Gauge._360;
 using Winforms.Maps;
 using Winforms.PieChart;
+using Winforms.Cartesian.Financial;
 
 namespace Winforms
 {
@@ -165,7 +166,7 @@ namespace Winforms
 
         private void button13_Click(object sender, EventArgs e)
         {
-            new StepLineExample().ShowDialog();
+            new FinancialExample().ShowDialog();
         }
 
         private void button14_Click(object sender, EventArgs e)

@@ -77,5 +77,8 @@ namespace LiveCharts.Definitions.Points
         /// The start reference.
         /// </value>
         double StartReference { get; set; }
+
+
+        object CustomStroke { get; set; }
     }
 }

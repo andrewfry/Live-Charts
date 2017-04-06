@@ -2,6 +2,7 @@
 using LiveCharts;
 using LiveCharts.Defaults;
 using LiveCharts.Wpf;
+using System.Windows.Media;
 
 namespace Winforms.Cartesian.Financial
 {
@@ -21,7 +22,8 @@ namespace Winforms.Cartesian.Financial
                         new OhlcPoint(33, 38, 31, 37),
                         new OhlcPoint(35, 42, 30, 40),
                         new OhlcPoint(37, 40, 35, 38),
-                        new OhlcPoint(35, 38, 32, 33)
+                        new OhlcPoint(35, 38, 32, 33),
+                        new OhlcPoint(66,55,22,44.0, new SolidColorBrush(Color.FromRgb(0xff, 0xff, 0x90)))
                     }
                 },
                 new LineSeries

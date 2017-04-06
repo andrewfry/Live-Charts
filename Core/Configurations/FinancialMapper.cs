@@ -36,6 +36,7 @@ namespace LiveCharts.Configurations
         private Func<T, int, double> _high;
         private Func<T, int, double> _low;
         private Func<T, int, double> _close;
+        private Func<T, object, object> _stroke;
 
         /// <summary>
         /// Sets values for a specific point
@@ -51,6 +52,7 @@ namespace LiveCharts.Configurations
             point.High = _high(value, key);
             point.Close = _close(value, key);
             point.Low = _low(value, key);
+            point.Stroke = _stroke(value, key);
         }
 
         /// <summary>
@@ -172,5 +174,21 @@ namespace LiveCharts.Configurations
             _low = predicate;
             return this;
         }
+
+        public FinancialMapper<T> CustomStroke(Func<T, object> predicate)
+        {
+            return CustomStroke((t, i) => predicate(t));
+        }
+        /// <summary>
+        /// Maps Low value
+        /// </summary>
+        /// <param name="predicate">function that pulls low value, index and value as parameters</param>
+        /// <returns>current mapper instance</returns>
+        public FinancialMapper<T> CustomStroke(Func<T, object, object> predicate)
+        {
+            _stroke = predicate;
+            return this;
+        }
+
     }
 }

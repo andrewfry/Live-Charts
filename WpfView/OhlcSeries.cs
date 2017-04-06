@@ -71,13 +71,13 @@ namespace LiveCharts.Wpf
         /// The maximum column width property
         /// </summary>
         public static readonly DependencyProperty MaxColumnWidthProperty = DependencyProperty.Register(
-            "MaxColumnWidth", typeof (double), typeof (OhlcSeries), new PropertyMetadata(default(double)));
+            "MaxColumnWidth", typeof(double), typeof(OhlcSeries), new PropertyMetadata(default(double)));
         /// <summary>
         /// Gets or sets the maximum with of a point, a point will be capped to this width.
         /// </summary>
         public double MaxColumnWidth
         {
-            get { return (double) GetValue(MaxColumnWidthProperty); }
+            get { return (double)GetValue(MaxColumnWidthProperty); }
             set { SetValue(MaxColumnWidthProperty, value); }
         }
 
@@ -85,13 +85,13 @@ namespace LiveCharts.Wpf
         /// The increase brush property
         /// </summary>
         public static readonly DependencyProperty IncreaseBrushProperty = DependencyProperty.Register(
-            "IncreaseBrush", typeof (Brush), typeof (OhlcSeries), new PropertyMetadata(default(Brush)));
+            "IncreaseBrush", typeof(Brush), typeof(OhlcSeries), new PropertyMetadata(default(Brush)));
         /// <summary>
         /// Gets or sets the brush of the point when close value is grater than open value
         /// </summary>
         public Brush IncreaseBrush
         {
-            get { return (Brush) GetValue(IncreaseBrushProperty); }
+            get { return (Brush)GetValue(IncreaseBrushProperty); }
             set { SetValue(IncreaseBrushProperty, value); }
         }
 
@@ -99,13 +99,13 @@ namespace LiveCharts.Wpf
         /// The decrease brush property
         /// </summary>
         public static readonly DependencyProperty DecreaseBrushProperty = DependencyProperty.Register(
-            "DecreaseBrush", typeof (Brush), typeof (OhlcSeries), new PropertyMetadata(default(Brush)));
+            "DecreaseBrush", typeof(Brush), typeof(OhlcSeries), new PropertyMetadata(default(Brush)));
         /// <summary>
         /// Gets or sets the brush of the point when close value is less than open value
         /// </summary>
         public Brush DecreaseBrush
         {
-            get { return (Brush) GetValue(DecreaseBrushProperty); }
+            get { return (Brush)GetValue(DecreaseBrushProperty); }
             set { SetValue(DecreaseBrushProperty, value); }
         }
 
@@ -203,18 +203,27 @@ namespace LiveCharts.Wpf
                     Instance = point.Instance
                 }, pbv.DataLabel);
             }
-
-            if (point.Open < point.Close)
+            var customStroke = pbv.CustomStroke as Brush;
+            if (customStroke == null)
             {
-                pbv.HighToLowLine.Stroke = IncreaseBrush;
-                pbv.CloseLine.Stroke = IncreaseBrush;
-                pbv.OpenLine.Stroke = IncreaseBrush;
+                if (point.Open < point.Close)
+                {
+                    pbv.HighToLowLine.Stroke = IncreaseBrush;
+                    pbv.CloseLine.Stroke = IncreaseBrush;
+                    pbv.OpenLine.Stroke = IncreaseBrush;
+                }
+                else
+                {
+                    pbv.HighToLowLine.Stroke = DecreaseBrush;
+                    pbv.CloseLine.Stroke = DecreaseBrush;
+                    pbv.OpenLine.Stroke = DecreaseBrush;
+                }
             }
             else
             {
-                pbv.HighToLowLine.Stroke = DecreaseBrush;
-                pbv.CloseLine.Stroke = DecreaseBrush;
-                pbv.OpenLine.Stroke = DecreaseBrush;
+                pbv.HighToLowLine.Stroke = customStroke;
+                pbv.CloseLine.Stroke = customStroke;
+                pbv.OpenLine.Stroke = customStroke;
             }
 
             return pbv;

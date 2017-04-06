@@ -76,6 +76,8 @@ namespace LiveCharts.SeriesAlgorithms
                     View.DataLabels ? View.GetLabelPointFormatter()(chartPoint) : null);
 
                 chartPoint.SeriesView = View;
+                
+                
 
                 var ohclView = (IOhlcPointView) chartPoint.View;
 
@@ -87,6 +89,8 @@ namespace LiveCharts.SeriesAlgorithms
                 ohclView.Width = candleWidth - padding > 0 ? candleWidth - padding : 0;
                 ohclView.Left = x + exceed/2 + padding;
                 ohclView.StartReference = (ohclView.High + ohclView.Low)/2;
+
+                ohclView.CustomStroke = chartPoint.Stroke;
 
                 chartPoint.ChartLocation = new CorePoint(x + exceed/2, (ohclView.High + ohclView.Low)/2);
 

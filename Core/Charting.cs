@@ -57,6 +57,7 @@ namespace LiveCharts
 
             //lets configure <int>
 
+           
             For<int>(Mappers.Xy<int>()
                 .X((value, index) => index) //use the index of the item in the array as X
                 .Y(value => value), SeriesOrientation.Horizontal); //use the value (of type int integer this case) as Y
@@ -99,7 +100,8 @@ namespace LiveCharts
                 .Open(value => value.Open)
                 .High(value => value.High)
                 .Low(value => value.Low)
-                .Close(value => value.Close), SeriesOrientation.Horizontal);
+                .Close(value => value.Close)
+                .CustomStroke(value => value.CustomStroke), SeriesOrientation.Horizontal);
 
             For<double>(Mappers.Xy<double>()
                 .X((value, index) => index)

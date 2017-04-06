@@ -33,6 +33,7 @@ namespace LiveCharts.Defaults
         private double _high;
         private double _low;
         private double _close;
+        private object _customStroke;
 
         /// <summary>
         /// Initializes a new instance of OhclPoint class
@@ -55,6 +56,25 @@ namespace LiveCharts.Defaults
             High = high;
             Low = low;
             Close = close;
+        }
+
+        public OhlcPoint(double open, double high, double low, double close, object brushStroke)
+        {
+            Open = open;
+            High = high;
+            Low = low;
+            Close = close;
+            CustomStroke = brushStroke;
+        }
+
+        public object CustomStroke
+        {
+            get { return _customStroke; }
+            set
+            {
+                _customStroke = value;
+                OnPointChanged();
+            }
         }
 
         /// <summary>

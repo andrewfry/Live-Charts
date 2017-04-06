@@ -41,6 +41,7 @@ namespace LiveCharts.Wpf.Points
         public double Width { get; set; }
         public double Left { get; set; }
         public double StartReference { get; set; }
+        public object CustomStroke { get; set; }
 
         public override void DrawOrMove(ChartPoint previousDrawn, ChartPoint current, int index, ChartCore chart)
         {

@@ -26,6 +26,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using LiveCharts.Charts;
 using LiveCharts.Definitions.Points;
+using System.Windows.Media;
 
 namespace LiveCharts.Wpf.Points
 {
@@ -41,6 +42,8 @@ namespace LiveCharts.Wpf.Points
         public double Width { get; set; }
         public double Left { get; set; }
         public double StartReference { get; set; }
+
+        public object CustomStroke { get; set; }
 
         public override void DrawOrMove(ChartPoint previousDrawn, ChartPoint current, int index, ChartCore chart)
         {
